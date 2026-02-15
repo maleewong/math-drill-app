@@ -36,15 +36,19 @@ st.set_page_config(page_title="Math Drill Pro", page_icon="📝", layout="wide")
 
 st.markdown("""
     <style>
+    /* Global Container Settings */
     .block-container {
-        padding: 2rem 1rem !important;
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
         max-width: 95%;
     }
 
     h2 { font-size: calc(1.5rem + 1vw) !important; font-weight: 700; }
     h3 { font-size: calc(1.1rem + 0.5vw) !important; line-height: 1.4 !important; }
 
-    /* ปุ่มคำตอบ: หนา ชัด เข้ม (v2.1) */
+    /* ปุ่มคำตอบ: หนา ชัด เข้ม */
     .stButton button {
         width: 100%;
         white-space: normal !important;
@@ -63,7 +67,7 @@ st.markdown("""
         background-color: #f0f7ff !important;
     }
 
-    /* กล่องขั้นตอนการคิด (v2.3: ป้องกันการแตกของตัวเลขทศนิยม) */
+    /* กล่องขั้นตอนการคิด */
     .explanation-container {
         background-color: #f8f9fa;
         border-left: 5px solid #007bff;
@@ -79,8 +83,22 @@ st.markdown("""
         word-wrap: break-word;
     }
     
+    /* --- Mobile Fix: แก้ปัญหาปุ่ม Sidebar ทับหัวข้อ --- */
     @media (max-width: 640px) {
-        .block-container { padding: 1rem 0.5rem !important; }
+        .block-container {
+            /* ดันเนื้อหาลงมา 6rem เพื่อให้พ้นปุ่มลูกศร Sidebar */
+            padding-top: 6rem !important; 
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+        
+        /* ปรับขนาดหัวข้อในมือถือไม่ให้ใหญ่เกินไปจนเบียด */
+        h2 { font-size: 1.8rem !important; }
+        
+        /* ปรับปุ่มให้กดง่ายขึ้นในจอสัมผัส */
+        .stButton button {
+            min-height: 4rem !important;
+        }
     }
     </style>
     """, unsafe_allow_html=True)
